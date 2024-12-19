@@ -1,17 +1,16 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
-#include <stdbool.h>
 
 // Actual KW pair stored in the linked list
 typedef struct {
   char *key;
   char *value;
-} KWPair;
+} KVPair;
 
 // Linked list node
 typedef struct Node {
-  KWPair *data;
-  struct Node *node;
+  KVPair *data;
+  struct Node *next;
 } Node;
 
 // DS to store KWPairs
@@ -23,12 +22,13 @@ typedef struct {
 // FUNCTION DECLARATIONS
 LinkedList *createLinkedList();
 void freeLinkedList(LinkedList *list);
-
-Node *createNode(const char *key, const char value);
-void deleteNode(LinkedList list, const char *key);
 void printLinkedList(LinkedList *list);
-const char *get(LinkedList list, const char *key);
-void *set(LinkedList list, const char *key, const char *newValue);
-bool ifExist(char *key);
+
+Node *createNode(const char *key, const char *value);
+void deleteNode(LinkedList *list, const char *key);
+void freeNodeData(Node *node);
+const char *get(LinkedList *list, const char *key);
+void set(LinkedList *list, const char *key, const char *value);
+Node *ifExist(LinkedList *list, const char *key);
 
 #endif

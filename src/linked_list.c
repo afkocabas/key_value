@@ -109,12 +109,14 @@ Node *ifExist(LinkedList *list, const char *key) {
 
 void set(LinkedList *list, const char *key, const char *value) {
   Node *node = ifExist(list, key);
+  // In case the key already exists.
   if (node != NULL) {
     free(node->data->value);
     node->data->value = strdup(value);
     if (!node->data->value) {
       fprintf(stderr, "set: Memory allocation failed for node->data->value.\n");
     }
+    return;
   }
 
   Node *newNode = createNode(key, value);

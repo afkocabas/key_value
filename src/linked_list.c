@@ -107,6 +107,14 @@ Node *ifExist(LinkedList *list, const char *key) {
   return NULL;
 }
 
+const char *get(LinkedList *list, const char *key) {
+  Node *node = ifExist(list, key);
+  if (node != NULL)
+    return node->data->value;
+  else
+    return NULL;
+}
+
 void set(LinkedList *list, const char *key, const char *value) {
   Node *node = ifExist(list, key);
   // In case the key already exists.
@@ -134,17 +142,16 @@ void set(LinkedList *list, const char *key, const char *value) {
   list->tail->next = newNode;
   list->tail = newNode;
 }
-
 void printLinkedList(LinkedList *list) {
   if (list->head == NULL) {
-    printf("[]");
+    printf("[]\n");
+    return;
   }
-  printf("[");
 
   Node *current = list->head;
   while (current != NULL) {
-    printf(" (%s | %s) ->", current->data->key, current->data->value);
+    printf("(%s | %s) ->", current->data->key, current->data->value);
     current = current->next;
   }
-  printf(" NULL ]\n");
+  printf(" NULL\n");
 }

@@ -1,19 +1,12 @@
+#include "../include/key_value_store.h"
 #include "../include/linked_list.h"
 #include <stdio.h>
 
 int main() {
-  LinkedList *list = createLinkedList();
-  printLinkedList(list);
-  set(list, "ahmet", "mehmet");
-  set(list, "ali", "kemal");
-  printLinkedList(list);
-  deleteNode(list, "ahmet");
-  deleteNode(list, "ali");
-  printLinkedList(list);
-  if (ifExist(list, "ahmet") == NULL) {
-    printf("The key value does not exists in the base\n");
-  } else {
-    printf("key found!\n");
-  }
+  KeyValueStore *store = kv_create();
+  printLinkedList(store->list);
+  kv_set(store, "key1", "value1");
+  printLinkedList(store->list);
+  printf("The is %s\n", kv_get(store, "key2"));
   return 0;
 }

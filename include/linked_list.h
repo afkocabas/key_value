@@ -31,4 +31,4 @@ const char *get(LinkedList *list, const char *key);
 void set(LinkedList *list, const char *key, const char *value);
 Node *ifExist(LinkedList *list, const char *key);
 
-#endif
+#endif // LINKED_LIST_H

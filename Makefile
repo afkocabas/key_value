@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -pthread
-SRC = src/main.c src/linked_list.c src/key_value_store.c
+SRC = src/main.c src/linked_list.c src/key_value_store.c src/command.c
 OUT = build/key_value_store
 
 all: $(SRC)

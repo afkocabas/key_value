@@ -1,16 +1,17 @@
+#include "../include/command.h"
 #include "../include/key_value_store.h"
-#include "../include/linked_list.h"
 #include <stdio.h>
+#include <strings.h>
 
 int main() {
+  char input[MAX_INPUT];
   KeyValueStore *store = kv_create();
-  printLinkedList(store->list);
-  kv_set(store, "key1", "value1");
-  kv_set(store, "key2", "value2");
-  printLinkedList(store->list);
-  kv_set(store, "key2", "ahmetfurkan");
-  printLinkedList(store->list);
-  printf("The is %s\n", kv_get(store, "key1"));
-  printf("The is %s\n", kv_get(store, "key2"));
+  while (1) {
+    printf("> ");
+    if (!fgets(input, sizeof(input), stdin)) {
+      return 1;
+    }
+    handle_command(store, input);
+  }
   return 0;
 }

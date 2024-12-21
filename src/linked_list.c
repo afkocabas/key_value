@@ -142,16 +142,20 @@ void set(LinkedList *list, const char *key, const char *value) {
   list->tail->next = newNode;
   list->tail = newNode;
 }
+
 void printLinkedList(LinkedList *list) {
+
   if (list->head == NULL) {
     printf("[]\n");
     return;
   }
 
   Node *current = list->head;
+  int counter = 1;
   while (current != NULL) {
-    printf("(%s | %s) ->", current->data->key, current->data->value);
+    printf("%d: (%s | %s)\n", counter, current->data->key,
+           current->data->value);
     current = current->next;
+    counter++;
   }
-  printf(" NULL\n");
 }

@@ -6,7 +6,11 @@ int main() {
   KeyValueStore *store = kv_create();
   printLinkedList(store->list);
   kv_set(store, "key1", "value1");
+  kv_set(store, "key2", "value2");
   printLinkedList(store->list);
+  kv_set(store, "key2", "ahmetfurkan");
+  printLinkedList(store->list);
+  printf("The is %s\n", kv_get(store, "key1"));
   printf("The is %s\n", kv_get(store, "key2"));
   return 0;
 }
